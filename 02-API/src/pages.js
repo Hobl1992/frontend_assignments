@@ -19,7 +19,7 @@ export default
   drivers : (ctx) => {
     let val = getValue(ctx);
 
-    fetch(`${config.api.url}/drivers.json?limit=${20}&offset=${20 * val}`)
+    fetch(`${config.api.url}/drivers.json?limit=${20}&offset=${20 * (val - 1)}`)
       .then( response =>
         response.json())
       .then( response => {
@@ -66,7 +66,7 @@ export default
   constructors: (ctx) => {
     let val = getValue(ctx);
 
-    fetch(`${config.api.url}/constructors.json?limit=${20}&offset=${20 * val}`)
+    fetch(`${config.api.url}/constructors.json?limit=${20}&offset=${20 * (val - 1)}`)
       .then(response =>
         response.json())
       .then(response => {

@@ -8,6 +8,5 @@ export default function (ctx) {
   if(val)
     return val;
 
-  return 0;
+  return 1;
 }
-
