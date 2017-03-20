@@ -13,7 +13,6 @@ import constructorsTpl from './templates/constructors.hbs';
 import constructorTpl from './templates/constructor.hbs';
 import notFoundTpl from './templates/not-found.hbs';
 
-
 export default
 {
   drivers : (ctx) => {
@@ -60,7 +59,7 @@ export default
       })
       .catch( err => {
         console.log(err);
-        document.getElementById('app').innerHTML = notFoundTpl()
+        document.getElementById('app').innerHTML = notFoundTpl();
       });
   },
   constructors: (ctx) => {
@@ -70,7 +69,7 @@ export default
       .then(response =>
         response.json())
       .then(response => {
-        document.getElementById('app').innerHTML = constructorsTpl({constructors: response})
+        document.getElementById('app').innerHTML = constructorsTpl({constructors: response});
         paging('/constructors', val, response.MRData.total);
       })
       .catch( err =>

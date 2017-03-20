@@ -70,7 +70,7 @@ gulp.task('connect', function() {
     port: 3000,
     livereload: true,
     open: {
-      browser: 'google chrome'
+      browser: undefined
     },
     middleware: (connect, options) => {
       const middlewares = [];
