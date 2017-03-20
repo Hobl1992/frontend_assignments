@@ -20,5 +20,5 @@ Handlebars.registerHelper('concat', function(con, cat){
 });
 
 Handlebars.registerHelper('moment', function (date) {
-  return
+  return moment(date).format("D.MM.YYYY");
 });
