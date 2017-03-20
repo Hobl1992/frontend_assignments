@@ -1,19 +1,6 @@
 <h1>{{driver.familyName}}</h1>
-<table class="table table-bordered">
-    <thead>
-    <tr>
-        <th>Given Name</th>
-        <th>Family Name</th>
-        <th>Nationality</th>
-        <th>Last Constructor</th>
-    </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{driver.givenName}}</td>
-            <td>{{driver.familyName}}</td>
-            <td>{{driver.nationality}}</td>
-            <td>{{link (concat '/constructor/' constructor.constructorId) constructor.name}}</td>
-        </tr>
-    </tbody>
-</table>
+<h3>{{driver.givenName}}</h3>
+<p>Nationality: {{driver.nationality}}</p>
+<p>Date of birth: {{driver.dateOfBirth}}</p>
+<p>Wikipedia: {{link driver.url 'Wikipedia'}}</p>
+<p>Last Constructor: {{link (concat '/constructor/' constructor.constructorId) constructor.name}}</p>
