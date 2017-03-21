@@ -14,7 +14,7 @@
     <tr>
         <td>{{link (concat '/driver/' this.driverId) this.givenName}}</td>
         <td>{{link (concat '/driver/' this.driverId) this.familyName}}</td>
-        <td>{{this.dateOfBirth}}</td>
+        <td>{{moment this.dateOfBirth}}</td>
         <td>{{link this.url 'Wikipedia'}}</td>
     </tr>
     {{/each}}

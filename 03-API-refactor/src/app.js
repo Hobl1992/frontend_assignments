@@ -4,6 +4,9 @@
 
 import page from 'page';
 import pages from './pages';
+import handbarsHelpers from './handlebarsHelpers';
+
+handbarsHelpers();
 
 page('/', '/drivers');
 page('/drivers', pages.drivers);

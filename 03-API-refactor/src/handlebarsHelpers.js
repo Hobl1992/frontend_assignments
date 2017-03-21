@@ -5,20 +5,27 @@
 import Handlebars from 'hbsfy/runtime';
 import moment from 'moment';
 
-Handlebars.registerHelper('link', function(url, text){
+export default function() {
 
-  return new Handlebars.SafeString(
-    "<a href='" + url + "'>" + text + "</a>"
-  );
-});
+  Handlebars.registerHelper('link', function (url, text) {
 
-Handlebars.registerHelper('concat', function(con, cat){
+    return new Handlebars.SafeString(
+      "<a href='" + url + "'>" + text + "</a>"
+    );
+  });
 
-  return new Handlebars.SafeString(
-    con + cat
-  );
-});
+  Handlebars.registerHelper('concat', function (con, cat) {
 
-Handlebars.registerHelper('moment', function (date) {
-  return moment(date).format("D.MM.YYYY");
-});
+    return new Handlebars.SafeString(
+      con + cat
+    );
+  });
+
+  Handlebars.registerHelper('moment', function (date) {
+
+    if(!moment(date).isValid)
+      throw new 'no valid date';
+
+    return moment(date).format("D.MM.YYYY");
+  });
+}

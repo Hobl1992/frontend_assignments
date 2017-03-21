@@ -51,7 +51,7 @@ gulp.task('watch', function () {
     runSequence('browserify', 'reconnect');
   });
 
-  gulp.watch('./src/*.js', function () {
+  gulp.watch('./src/stylesheets/*.css', function () {
     runSequence('style', 'reconnect');
   });
 });

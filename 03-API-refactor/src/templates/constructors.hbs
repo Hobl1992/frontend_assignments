@@ -9,7 +9,7 @@
     </tr>
     </thead>
     <tbody>
-    {{#each constructors.MRData.ConstructorTable.Constructors}}
+    {{#each constructors}}
         <tr>
             <td>{{link (concat '/constructor/' this.constructorId) this.name}}</td>
             <td>{{this.nationality}}</td>
