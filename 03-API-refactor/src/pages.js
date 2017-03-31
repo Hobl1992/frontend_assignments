@@ -18,11 +18,8 @@ export default {
     let page = getPage(ctx);
 
     api.drivers.fetch(ctx, 20)
-      .then(response => {
-        const {drivers, total} = response;
-        document.getElementById('app').innerHTML = driversTpl(
-          {drivers}
-        );
+      .then(({driversWithConstructors, total}) => {
+        document.getElementById('app').innerHTML = driversTpl({driversWithConstructors});
         paging('/drivers', page, total);
       })
       .catch(err =>
@@ -31,10 +28,8 @@ export default {
   },
   driver: (ctx) => {
     api.driver.fetch(ctx)
-      .then(response => {
-        document.getElementById('app').innerHTML = driverTpl(
-          {driver: response.driver, constructor: response.constructor}
-        );
+      .then(({driver, constructor}) => {
+        document.getElementById('app').innerHTML = driverTpl({driver, constructor});
       })
       .catch(err =>
         document.getElementById('app').innerHTML = notFoundTpl()
@@ -44,11 +39,8 @@ export default {
     let page = getPage(ctx);
 
     api.constructors.fetch(ctx, 20)
-      .then(response => {
-        const {constructors, total} = response;
-        document.getElementById('app').innerHTML = constructorsTpl(
-          {constructors}
-        );
+      .then(({constructors, total}) => {
+        document.getElementById('app').innerHTML = constructorsTpl({constructors});
         paging('/constructors', page, total);
       })
       .catch(err =>
@@ -57,10 +49,8 @@ export default {
   },
   constructor: (ctx) => {
     api.constructor.fetch(ctx)
-      .then(response => {
-        document.getElementById('app').innerHTML = constructorTpl(
-          {drivers: response.drivers, constructor: response.constructor}
-        );
+      .then(({drivers, constructor}) => {
+        document.getElementById('app').innerHTML = constructorTpl({drivers, constructor});
       })
       .catch(err =>
         document.getElementById('app').innerHTML = notFoundTpl()

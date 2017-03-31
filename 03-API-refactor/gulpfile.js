@@ -1,7 +1,9 @@
 var gulp = require('gulp'),
   connect = require('gulp-connect-multi')(),
   sequence = require('gulp-sequence'),
-  runSequence = require('run-sequence');
+  runSequence = require('run-sequence'),
+  serveStatic = require('serve-static'),
+  fs = require('fs');
 
 gulp.task('browserify', function () {
   var browserify = require('browserify'),
@@ -61,16 +63,13 @@ gulp.task('reconnect', function () {
     .pipe(connect.reload());
 })
 
-gulp.task('connect', function() {
-  var serveStatic = require('serve-static'),
-    fs = require('fs');
 
-  gulp.task('connect', connect.server({
+gulp.task('connect', connect.server({
     root: './dist',
     port: 3000,
     livereload: true,
     open: {
-      browser: undefined
+      browser: 'google chrome'
     },
     middleware: (connect, options) => {
       const middlewares = [];
@@ -91,8 +90,7 @@ gulp.task('connect', function() {
       });
       return middlewares;
     }
-  }));
-});
+}));
 
 gulp.task('default', sequence(['clean'], 'copy', 'style', 'browserify'));
 gulp.task('start', sequence(['default'], 'connect', 'watch'));

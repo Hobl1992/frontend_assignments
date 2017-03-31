@@ -7,15 +7,17 @@
         <th>Family Name</th>
         <th>Date of birth</th>
         <th>WikiLink</th>
+        <th>Constructor</th>
     </tr>
     </thead>
     <tbody>
-    {{#each drivers}}
+    {{#each driversWithConstructors}}
     <tr>
-        <td>{{link (concat '/driver/' this.driverId) this.givenName}}</td>
-        <td>{{link (concat '/driver/' this.driverId) this.familyName}}</td>
-        <td>{{moment this.dateOfBirth}}</td>
-        <td>{{link this.url 'Wikipedia'}}</td>
+        <td>{{link (concat '/driver/' this.driver.driverId) this.driver.givenName}}</td>
+        <td>{{link (concat '/driver/' this.driver.driverId) this.driver.familyName}}</td>
+        <td>{{moment this.driver.dateOfBirth}}</td>
+        <td>{{link this.driver.url 'Wikipedia'}}</td>
+        <td>{{link (concat '/constructor/' this.constructor.constructorId) this.constructor.name}}</td>
     </tr>
     {{/each}}
     </tbody>

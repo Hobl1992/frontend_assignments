@@ -9,14 +9,40 @@ export default {
   drivers: {
     fetch: (ctx, limit) => {
       const page = getPage(ctx);
-
+      let driverWithConstructorUrl = Array();
       return fetch(`${config.api.url}/drivers.json?limit=${limit}&offset=${limit * (page - 1)}`)
-        .then( response =>
-          response.json())
-        .then( response => {
-          return {drivers: response.MRData.DriverTable.Drivers, total: response.MRData.total};
-        });
-    }
+        .then(response =>
+          response.json()
+        )
+        .then(response => {
+          for(let i = 0; i < response.MRData.DriverTable.Drivers.length; i++) {
+            const driverID = response.MRData.DriverTable.Drivers[i].driverId;
+            driverWithConstructorUrl[i] = {
+              driver: response.MRData.DriverTable.Drivers[i],
+              url: `${config.api.url}/drivers/${driverID}/constructors.json`
+            };
+          }
+            return Promise
+              .all(driverWithConstructorUrl.map(driverWithConstructor =>
+                  fetch(driverWithConstructor.url)
+                    .then(res =>
+                     res.json()
+                    )
+                    .then(res => {
+                      return {
+                        driver: driverWithConstructor.driver,
+                        constructor: res.MRData.ConstructorTable.Constructors[0]
+                      }
+                    })
+                )
+              ).then((driversWithConstructors) => ({
+                driversWithConstructors,
+                total: response.MRData.total
+              }));
+          });
+
+
+    },
   },
   driver : {
     fetch: (ctx) => {
@@ -79,3 +105,4 @@ export default {
     }
   }
 }
+
