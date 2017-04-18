@@ -15,22 +15,14 @@ var config = {
         publicPath: '/app/'
     },
     module: {
-        rules: [
+        loaders: [
             {
-                test: /\.js$/,
+                test: /\.js?/,
                 include: SRC_DIR,
                 loader: 'babel-loader',
                 query: {
                     presets: ['react', 'es2015', 'stage-2']
                 }
-            },
-            {
-                test: /\.css$/,
-                include: SRC_DIR,
-                use: [
-                    'style-loader',
-                    'css-loader'
-                ]
             }
         ]
     }
