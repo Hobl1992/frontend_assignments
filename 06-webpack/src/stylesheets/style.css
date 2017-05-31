@@ -1,0 +1,8 @@
+.paginator a {
+  margin-right: 5px;
+}
+
+.paginator-current {
+  font-size: 20px;
+  font-weight: bolder;
+}

@@ -1,0 +1,6 @@
+<h1>{{driver.familyName}}</h1>
+<h3>{{driver.givenName}}</h3>
+<p>Nationality: {{driver.nationality}}</p>
+<p>Date of birth: {{moment driver.dateOfBirth}}</p>
+<p>Wikipedia: {{link driver.url 'Wikipedia'}}</p>
+<p>Last Constructor: {{link (concat '/constructor/' constructor.constructorId) constructor.name}}</p>

@@ -1,0 +1,9 @@
+<h1>{{constructor.name}}</h1>
+<p>Nationality: {{constructor.nationality}}</p>
+<h3>Driver List</h3>
+<ul class="list-group">
+  {{#each drivers}}
+      <li class="list-group-item">{{link (concat '/driver/' this.driverId) this.familyName }}</li>
+  {{/each}}
+</ul>
+
